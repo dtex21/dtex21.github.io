@@ -1,0 +1,32 @@
+.logo {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+.information {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+    font-size: x-large;
+}
+
+a {
+    transition: color 0.3s ease;
+    margin: inherit;
+}
+
+a:link {
+    color: black;
+}
+
+a:hover {
+    color: crimson;
+}

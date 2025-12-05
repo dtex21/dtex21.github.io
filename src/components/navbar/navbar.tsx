@@ -1,21 +1,31 @@
+import { ReactElement } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { HomeOutlined, BookOutlined, ProjectOutlined } from "@ant-design/icons";
+import { Tooltip } from "antd";
 import "./navbar.css"
 
 interface IProps {
     className?: string;
 }
 
-const linkNameList: string[] = ['Home', 'CV', 'Projects']
+interface INavLink {
+    title: string;
+    icon: ReactElement;
+}
 
-const generateNavbarLinks = (linkNames: string[], navigate: NavigateFunction) => {
-    return linkNames.map((linkName: string) => {
-        const lowerCaseLinkName = linkName.toLowerCase()
+const navLinkList: INavLink[] = [{title: 'Home',icon: <HomeOutlined />}, {title: 'CV',icon: <BookOutlined />}, {title: 'Projects',icon: <ProjectOutlined />}]
+
+const generateNavbarLinks = (linkNames: INavLink[], navigate: NavigateFunction) => {
+    return linkNames.map((linkName: INavLink) => {
+        const lowerCaseLinkName = linkName.title.toLowerCase()
         return (
             <li className="link"
              id={lowerCaseLinkName} 
              key={lowerCaseLinkName} 
              onClick={() => navigate('/'.concat(lowerCaseLinkName))}>
-                {linkName}
+                <Tooltip title={linkName.title} placement="right" arrow={false}>
+                    {linkName.icon}
+                </Tooltip>
             </li>
         )}
     ) 
@@ -27,7 +37,7 @@ export const Navbar = (props: IProps) => {
         <nav className={props.className}>
             <div className="right-outline">
                 <ul className="links">
-                    {generateNavbarLinks(linkNameList, navigate)}
+                    {generateNavbarLinks(navLinkList, navigate)}
                 </ul>
             </div>
         </nav>

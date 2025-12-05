@@ -14,7 +14,7 @@ const App = () => {
           <Route path='/home' Component={Home}></Route>
           <Route path='/cv' Component={CV}></Route>
           <Route path='/projects' Component={Projects}></Route>
-          <Route path='*' element={<p>Not Found</p>}></Route>
+          <Route path='*' element={<p><b>404 Not Found</b></p>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
