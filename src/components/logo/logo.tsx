@@ -1,7 +1,7 @@
 import { Tooltip } from "antd";
 import { PhoneOutlined, MailOutlined, GithubOutlined } from "@ant-design/icons";
 import './logo.css'
-
+//TODO: add language support
 export const Logo = () => {
     return (
         <div className="logo">
@@ -25,6 +25,11 @@ export const Logo = () => {
                         <GithubOutlined />
                     </a>
                 </Tooltip>
+            </div>
+            <div className="languages-div">
+                <a className="language">GR</a>
+                <span>|</span>
+                <a className="language">EN</a>
             </div>
         </div>
     )
