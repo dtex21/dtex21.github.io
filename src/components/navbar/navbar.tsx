@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { HomeOutlined, BookOutlined, ProjectOutlined } from "@ant-design/icons";
+import { HomeOutlined, BookOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import "./navbar.css"
 
@@ -13,7 +13,7 @@ interface INavLink {
     icon: ReactElement;
 }
 
-const navLinkList: INavLink[] = [{title: 'Home',icon: <HomeOutlined />}, {title: 'CV',icon: <BookOutlined />}, {title: 'Projects',icon: <ProjectOutlined />}]
+const navLinkList: INavLink[] = [{title: 'Home',icon: <HomeOutlined />}, {title: 'CV',icon: <BookOutlined />}]
 
 const generateNavbarLinks = (linkNames: INavLink[], navigate: NavigateFunction) => {
     return linkNames.map((linkName: INavLink) => {

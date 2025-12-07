@@ -7,7 +7,7 @@ export const Logo = () => {
         <div className="logo">
             <div className="name-div">
                 <b>DIMITRIS TSELAS</b>
-                <i>Web Developer</i>
+                <i>Software Engineer</i>
             </div>
             <div className="information">
                 <Tooltip title="Telephone" placement="left" arrow={false}>
