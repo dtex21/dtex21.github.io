@@ -1,0 +1,15 @@
+.functional-icon {
+    transition: color 0.3s ease;
+    margin: inherit;
+    cursor: pointer;
+    font-size: x-large;
+    list-style-type: none;
+}
+
+.functional-icon:link {
+    color: black;
+}
+
+.functional-icon:hover {
+    color: crimson;
+}

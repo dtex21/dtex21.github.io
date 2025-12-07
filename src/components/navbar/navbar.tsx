@@ -1,31 +1,27 @@
-import { ReactElement } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { HomeOutlined, BookOutlined } from "@ant-design/icons";
-import { Tooltip } from "antd";
+import { createTooltip, IFunctionalIcon } from "../utils";
 import "./navbar.css"
+
 
 interface IProps {
     className?: string;
 }
 
-interface INavLink {
-    title: string;
-    icon: ReactElement;
-}
+const navLinkList: IFunctionalIcon[] = [
+    {title: 'Home',content: <HomeOutlined />},
+    {title: 'CV',content: <BookOutlined />}
+]
 
-const navLinkList: INavLink[] = [{title: 'Home',icon: <HomeOutlined />}, {title: 'CV',icon: <BookOutlined />}]
-
-const generateNavbarLinks = (linkNames: INavLink[], navigate: NavigateFunction) => {
-    return linkNames.map((linkName: INavLink) => {
+const generateNavbarLinks = (linkNames: IFunctionalIcon[], navigate: NavigateFunction) => {
+    return linkNames.map((linkName: IFunctionalIcon) => {
         const lowerCaseLinkName = linkName.title.toLowerCase()
         return (
-            <li className="link"
+            <li className="functional-icon"
              id={lowerCaseLinkName} 
              key={lowerCaseLinkName} 
              onClick={() => navigate('/'.concat(lowerCaseLinkName))}>
-                <Tooltip title={linkName.title} placement="right" arrow={false}>
-                    {linkName.icon}
-                </Tooltip>
+                {createTooltip(linkName)}
             </li>
         )}
     ) 

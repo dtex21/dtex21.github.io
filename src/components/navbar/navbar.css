@@ -25,19 +25,3 @@
     padding: 0 10px !important;
     box-shadow: 5px 5px 50px 1px rgba(0, 0, 0, 0.3);
 }
-
-.link {
-    font-size: x-large;
-    transition: color 0.3s ease;
-    list-style-type: none;
-    cursor: pointer;
-    margin: inherit;
-}
-
-.link:hover {
-    color: crimson;
-}
-
-.link:active { /* Must be changed for active tab */
-    color: red;
-}

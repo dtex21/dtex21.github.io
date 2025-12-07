@@ -18,20 +18,6 @@
     display: flex;
     flex-direction: column;
     margin-top: 2vh;
-    font-size: x-large;
-}
-
-a {
-    transition: color 0.3s ease;
-    margin: inherit;
-}
-
-a:link {
-    color: black;
-}
-
-a:hover {
-    color: crimson;
 }
 
 .languages-div {
@@ -40,8 +26,4 @@ a:hover {
     justify-content: space-around;
     margin-top: auto;
     cursor: default;
-}
-
-.language {
-    cursor: pointer;
 }
