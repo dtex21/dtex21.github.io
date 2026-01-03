@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react'
+import { useContext, useState } from 'react'
 import { DownloadOutlined, UndoOutlined, MinusCircleOutlined, PlusCircleOutlined, LoadingOutlined } from '@ant-design/icons'
 import { createTooltip, IFunctionalIcon } from '../utils'
 import { pdfjs, Document, Page } from 'react-pdf'
@@ -35,7 +35,7 @@ const CV = () => {
 
     const translatedCV = "tselas_cv_" + context.language + ".pdf"
 
-    const pdfToolsArray: IFunctionalIcon[] = useMemo(() => [
+    const pdfToolsArray: IFunctionalIcon[] = [
         {
             id: "zoomIn",
             title: translate('cv.zoomIn', context.language),
@@ -56,7 +56,7 @@ const CV = () => {
             title: translate('cv.download', context.language),
             content: <a href={translatedCV} download={true} style={{color: "black"}}><DownloadOutlined className="functional-icon" /></a>
         },
-    ], [context.language, scale])
+    ]
 
     return (
         <div className="pdfLayout">
