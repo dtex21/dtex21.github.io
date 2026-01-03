@@ -3,29 +3,30 @@ import { PhoneOutlined, MailOutlined, GithubOutlined } from "@ant-design/icons";
 import './logo.css'
 import '../utils.css'
 import { Switch } from "antd";
-import { useRef, useState } from "react";
-//TODO: add language support
-
-const informationIconsArray: IFunctionalIcon[] = [
-    {
-        title: "Telephone",
-        content: <a className="functional-icon" href="tel:+306986710185"><PhoneOutlined /></a>
-    }, 
-    {
-        title: "Mail",
-        content: <a className="functional-icon" href="mailto:dtselas@protonmail.com"><MailOutlined/></a>
-    },
-    {
-        title: "Github",
-        content: <a className="functional-icon" href="https://github.com/dtex21/" target="_blank" rel="noreferer"><GithubOutlined/></a>
-    }
-]
-
-const defaultLanguage = 'GR'
+import { useContext, useMemo } from "react";
+import { LanguageContext, translate } from "../../translation/helper";
 
 export const Logo = () => {
-    const language = useRef<string>(defaultLanguage)
-    const [languageSwitch, setLanguageSwitch] = useState<boolean>(language.current === defaultLanguage)
+    const context = useContext(LanguageContext)
+    const languageSwitch = context.language === 'gr'
+
+    const informationIconsArray: IFunctionalIcon[] = useMemo(() => [
+        {
+            id: "telephone",
+            title: translate('logo.telephone', context.language),
+            content: <a className="functional-icon" href="tel:+306986710185"><PhoneOutlined /></a>
+        }, 
+        {
+            id: "mail",
+            title: translate('logo.mail', context.language),
+            content: <a className="functional-icon" href="mailto:dtselas@protonmail.com"><MailOutlined/></a>
+        },
+        {
+            id: "github",
+            title: translate('logo.github', context.language),
+            content: <a className="functional-icon" href="https://github.com/dtex21/" target="_blank" rel="noreferrer"><GithubOutlined/></a>
+        }
+    ], [context.language])
 
     const handleSwitchStyle = () => {
         const switchElement = document.getElementById('languageSwitch')
@@ -33,18 +34,16 @@ export const Logo = () => {
     }
 
     const handleLanguageChange = (switchValue: boolean) => {
-        debugger
-        const activeLanguage = switchValue ? 'GR' : 'EN'
-        language.current = activeLanguage
+        const activeLanguage = switchValue ? 'gr' : 'en'
         handleSwitchStyle()
-        setLanguageSwitch(language.current === defaultLanguage)
+        context.setLanguage(activeLanguage)
     }
 
     return (
         <div className="logo">
             <div className="name-div">
-                <b>DIMITRIS TSELAS</b>
-                <i>Software Engineer</i>
+                <b>{translate('logo.name', context.language)}</b>
+                <i>{translate('logo.jobTitle', context.language)}</i>
             </div>
             <div className="information">
                 {informationIconsArray.map((element) => createTooltip(element, "left"))}

@@ -1,3 +1,7 @@
+.navbar {
+    height: inherit;
+}
+
 .right-outline {
     height: inherit;
     border-radius: 10%;

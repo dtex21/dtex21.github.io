@@ -1,8 +1,10 @@
-import React from "react";
+import { useContext } from "react";
+import { LanguageContext, translate } from "../../translation/helper";
 
 const Home = () => {
+    const context = useContext(LanguageContext)
     return (
-        <p>Home</p>
+        <p>{translate('home.description', context.language)}</p>
     )
 }
 
