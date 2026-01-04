@@ -8,9 +8,11 @@ export interface IFunctionalIcon {
     content: ReactElement;
 }
 
+export const changeLanguageAnimationDelay = 200 //in ms
+
 export const createTooltip = (icon: IFunctionalIcon, placement?: TooltipPlacement) => {
     return (
-        <Tooltip id={icon.id} title={icon.title} placement={placement ?? "right"} arrow={false}>
+        <Tooltip key={icon.id} title={icon.title} placement={placement ?? "right"} arrow={false}>
             {icon.content}
         </Tooltip>
     )

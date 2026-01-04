@@ -13,7 +13,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-} 
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.show-name-div {
+    opacity: 0;
+}
+
+@starting-style {
+    .show-name-div {
+        opacity: 1;
+    }
+}
 
 .information {
     display: flex;

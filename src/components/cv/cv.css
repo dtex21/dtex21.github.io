@@ -9,7 +9,19 @@
     flex-direction: column;
     height: 15vh;
     justify-content: space-evenly;
+    align-items: center;
     padding: 1vh;
+}
+
+.zoom-level-div {
+    height: fit-content;
+    width: 45px;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    padding: 2px;
+    margin-bottom: 5px;
+    text-align: center;
+    user-select: none;
 }
 
 .pdfViewport {
@@ -18,4 +30,16 @@
     display: flex;
     margin: auto;
     border-radius: 1%;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.show-pdfViewport {
+    opacity: 0;
+}
+
+@starting-style {
+    .show-pdfViewport {
+        opacity: 1;
+    }
 }

@@ -1,4 +1,4 @@
-import { createTooltip, IFunctionalIcon } from "../utils";
+import { changeLanguageAnimationDelay, createTooltip, IFunctionalIcon } from "../utils";
 import { PhoneOutlined, MailOutlined, GithubOutlined } from "@ant-design/icons";
 import './logo.css'
 import '../utils.css'
@@ -33,15 +33,22 @@ export const Logo = () => {
         switchElement?.setAttribute('style', `background-color: ${languageSwitch ? 'crimson' : 'black'}`)
     }
 
+    const handleNameDivStyle = () => {
+        const nameDiv = document.getElementById('nameDiv')
+        nameDiv?.classList.toggle('show-name-div')
+        setTimeout(() => nameDiv?.classList.toggle('show-name-div'), changeLanguageAnimationDelay)
+    }
+
     const handleLanguageChange = (switchValue: boolean) => {
         const activeLanguage = switchValue ? 'gr' : 'en'
         handleSwitchStyle()
-        context.setLanguage(activeLanguage)
+        handleNameDivStyle()
+        setTimeout(() => context.setLanguage(activeLanguage), changeLanguageAnimationDelay)
     }
 
     return (
         <div className="logo">
-            <div className="name-div">
+            <div id="nameDiv" className="name-div">
                 <b>{translate('logo.name', context.language)}</b>
                 <i>{translate('logo.jobTitle', context.language)}</i>
             </div>

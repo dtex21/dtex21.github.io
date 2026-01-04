@@ -46,6 +46,10 @@ export const dict: IDictionary = {
         }
     },
     cv: {
+        zoomLevel: {
+            en: 'Zoom Level',
+            gr: 'Επίπεδο εστίασης'
+        },
         zoomIn: {
             en: 'Zoom In',
             gr: 'Μεγέθυνση'
@@ -61,6 +65,14 @@ export const dict: IDictionary = {
         download: {
             en: 'Download',
             gr: 'Λήψη'
+        },
+        maxZoomLevel: {
+            en: 'Maximum zoom level reached',
+            gr: 'Μέγιστο επίπεδο εστίασης'
+        },
+        minZoomLevel: {
+            en: 'Minimum zoom level reached',
+            gr: 'Ελάχιστο επίπεδο εστίασης'
         }
     }
 }

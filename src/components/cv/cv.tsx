@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
-import { DownloadOutlined, UndoOutlined, MinusCircleOutlined, PlusCircleOutlined, LoadingOutlined } from '@ant-design/icons'
-import { createTooltip, IFunctionalIcon } from '../utils'
+import { DownloadOutlined, UndoOutlined, MinusCircleOutlined, PlusCircleOutlined, LoadingOutlined, InfoCircleOutlined } from '@ant-design/icons'
+import { notification } from 'antd'
+import { changeLanguageAnimationDelay, createTooltip, IFunctionalIcon } from '../utils'
 import { pdfjs, Document, Page } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
@@ -19,17 +20,35 @@ const CV = () => {
     const context = useContext(LanguageContext)
     const [scale, setScale] = useState<number>(defaultPDFScale)
 
+    const handlePdfViewportTransitionStyle = () => {
+        const pdfViewportDiv = document.getElementById('pdfViewport')
+        pdfViewportDiv?.classList.toggle('show-pdfViewport')
+        setTimeout(() => pdfViewportDiv?.classList.toggle('show-pdfViewport'), changeLanguageAnimationDelay)
+    }
+
     const handleScaleSetting = (action?: string, currentPDFScale?: number) => {
         const scale = currentPDFScale ?? defaultPDFScale
-        switch(action) {
-            case pdfToolsArray[0].id:
-                setScale(scale < pdfScaleUpperLimit ? scale + pdfScaleStep : pdfScaleUpperLimit)
-                break
-            case pdfToolsArray[1].id: 
-                setScale(scale > pdfScaleLowerLimit ? scale - pdfScaleStep : pdfScaleLowerLimit)
-                break
-            default: 
-                setScale(defaultPDFScale)
+
+        if(scale === pdfScaleUpperLimit && action === 'zoomIn') {
+            notification.info({message: translate('cv.maxZoomLevel', context.language), icon: <InfoCircleOutlined />})
+        }  
+        else if(scale === pdfScaleLowerLimit && action === 'zoomOut') {
+            notification.info({message: translate('cv.minZoomLevel', context.language), icon: <InfoCircleOutlined />})
+        } 
+        else {
+            handlePdfViewportTransitionStyle()
+            setTimeout(() => {
+                    switch(action) {
+                        case 'zoomIn':
+                            scale < pdfScaleUpperLimit && setScale(Number((scale + pdfScaleStep).toFixed(1)))
+                            break
+                        case 'zoomOut': 
+                            scale > pdfScaleLowerLimit && setScale(Number((scale - pdfScaleStep).toFixed(1)))
+                            break
+                        default: 
+                            setScale(defaultPDFScale)
+                    }
+            }, changeLanguageAnimationDelay)
         }
     }
 
@@ -37,14 +56,19 @@ const CV = () => {
 
     const pdfToolsArray: IFunctionalIcon[] = [
         {
+            id: "zoomLevel",
+            title: translate('cv.zoomLevel', context.language),
+            content: <div className='zoom-level-div'>{`${((scale - 0.5) * 100).toFixed(0)}%`}</div>
+        },
+        {
             id: "zoomIn",
             title: translate('cv.zoomIn', context.language),
-            content: <PlusCircleOutlined className="functional-icon" onClick={() => handleScaleSetting(pdfToolsArray[0].id, scale)}/>
+            content: <PlusCircleOutlined className="functional-icon" onClick={() => handleScaleSetting('zoomIn', scale)}/>
         },
         {
             id: "zoomOut",
             title: translate('cv.zoomOut', context.language),
-            content: <MinusCircleOutlined className="functional-icon" onClick={() => handleScaleSetting(pdfToolsArray[1].id, scale)}/>
+            content: <MinusCircleOutlined className="functional-icon" onClick={() => handleScaleSetting('zoomOut', scale)}/>
         },
         {
             id: "resetZoom",
@@ -54,7 +78,7 @@ const CV = () => {
         {
             id: "download",
             title: translate('cv.download', context.language),
-            content: <a href={translatedCV} download={true} style={{color: "black"}}><DownloadOutlined className="functional-icon" /></a>
+            content: <a href={translatedCV} download={true} style={{color: "black", marginTop: '2px'}}><DownloadOutlined className="functional-icon" /></a>
         },
     ]
 
@@ -63,7 +87,7 @@ const CV = () => {
             <div className="pdfTools">
                 {pdfToolsArray.map((tool) => createTooltip(tool))}
             </div>
-            <div className="pdfViewport">
+            <div id="pdfViewport" className="pdfViewport">
                 <Document file={translatedCV} loading={<LoadingOutlined />} scale={scale}>
                     <Page pageNumber={1} />
                 </Document>

@@ -1,4 +1,4 @@
-.functional-icon {
+.functional-icon, .active-functional-icon {
     transition: color 0.3s ease;
     margin: inherit;
     cursor: pointer;
@@ -11,5 +11,9 @@
 }
 
 .functional-icon:hover {
+    color: crimson;
+}
+
+.active-functional-icon {
     color: crimson;
 }
