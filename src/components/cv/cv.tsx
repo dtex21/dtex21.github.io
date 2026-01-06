@@ -18,7 +18,7 @@ const CV = () => {
     const context = useContext(LanguageContext)
     const [scale, setScale] = useState<number>(defaultPDFScale)
 
-    pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url,).toString()
+    pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
     const handlePdfViewportTransitionStyle = () => {
         const pdfViewportDiv = document.getElementById('pdfViewport')
