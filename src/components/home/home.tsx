@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className="home-div">
             <div className="home-image-container">
-                <img src={homeImage} className="home-image"/>
+                <img src={homeImage} alt="code-home" className="home-image"/>
                 <div className="home-image-text-container">
                     <p className="home-image-text">
                         {translate('home.imageDescription', context.language)}
