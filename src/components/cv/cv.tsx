@@ -52,7 +52,7 @@ const CV = () => {
         }
     }
 
-    const translatedCV = "tselas_cv_" + context.language + ".pdf"
+    const translatedCV = process.env.PUBLIC_URL + "tselas_cv_" + context.language + ".pdf"
 
     const pdfToolsArray: IFunctionalIcon[] = [
         {

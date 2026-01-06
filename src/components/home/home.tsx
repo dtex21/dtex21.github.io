@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { LanguageContext, translate } from "../../translation/helper";
 import "./home.css"
+import homeImage from "../../assets/code_home.png"
 
 const Home = () => {
     const context = useContext(LanguageContext)
     return (
         <div className="home-div">
             <div className="home-image-container">
-                <img src="code_home.png" className="home-image"/>
+                <img src={homeImage} className="home-image"/>
                 <div className="home-image-text-container">
                     <p className="home-image-text">
                         {translate('home.imageDescription', context.language)}
