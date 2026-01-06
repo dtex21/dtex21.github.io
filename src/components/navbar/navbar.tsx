@@ -10,7 +10,7 @@ const generateNavbarLinks = (linkNames: IFunctionalIcon[]) => {
         const linkNameId = linkName.id
         return (
             <NavLink to={`/${linkNameId}`} 
-                key={linkNameId} 
+                key={linkNameId}
                 className={({isActive}) => isActive ? "active-functional-icon" : "functional-icon"}
                 style={{marginBottom: '3vh'}}>
                     {createTooltip(linkName)}

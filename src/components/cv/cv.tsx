@@ -82,16 +82,31 @@ const CV = () => {
         },
     ]
 
+    const isMobileRegex = /android|iphone|kindle|ipad/i;
+    const isMobile = isMobileRegex.test(navigator.userAgent)
+
+    const pdfDownloadFunctionalIcon = pdfToolsArray[pdfToolsArray.length - 1]
+
     return (
         <div className="pdfLayout">
-            <div className="pdfTools">
-                {pdfToolsArray.map((tool) => createTooltip(tool))}
-            </div>
-            <div id="pdfViewport" className="pdfViewport">
-                <Document file={translatedCV} loading={<LoadingOutlined />} scale={scale}>
-                    <Page pageNumber={1} />
-                </Document>
-            </div>
+            {isMobile ? (
+                <div className='pdfTools-mobile'>
+                    <p>{pdfDownloadFunctionalIcon.title} PDF</p>
+                    {pdfDownloadFunctionalIcon.content}
+                </div>
+                ) : (
+                <>
+                    <div className="pdfTools">
+                        {pdfToolsArray.map((tool) => createTooltip(tool))}
+                    </div>
+                    <div id="pdfViewport" className="pdfViewport">
+                        <Document file={translatedCV} loading={<LoadingOutlined />} scale={scale}>
+                            <Page pageNumber={1} />
+                        </Document>
+                    </div>
+                </>
+                )
+            }
         </div>
     )
 }

@@ -40,9 +40,21 @@ export const dict: IDictionary = {
         }
     },
     home: {
+        welcome: {
+            en: 'Welcome',
+            gr: 'Καλώς Ορίσατε'
+        },
         description: {
-            en: 'home placeholder',
-            gr: 'metafrasi tou home'
+            en: 'I am a software engineer who works with Web technologies.',
+            gr: 'Είμαι μηχανικός λογισμικού που δουλεύει με τεχνολογίες Web.'
+        },
+        forwardToCv: {
+            en: 'For more information click the icon to the menu in the right.',
+            gr: 'Για περισσότερες πληροφορίες πατήστε το εικονίδιο στο μενού δεξιά.'
+        },
+        imageDescription: {
+            en: 'Modern applications with modern tools',
+            gr: 'Σύγχρονες εφαρμογές με σύγχρονα εργαλεία'
         }
     },
     cv: {
