@@ -43,7 +43,10 @@ export const Logo = () => {
         const activeLanguage = switchValue ? 'gr' : 'en'
         handleSwitchStyle()
         handleNameDivStyle()
-        setTimeout(() => context.setLanguage(activeLanguage), changeLanguageAnimationDelay)
+        setTimeout(() => {
+            window.sessionStorage.setItem('userSetLanguage', activeLanguage)
+            context.setLanguage(activeLanguage)
+        }, changeLanguageAnimationDelay)
     }
 
     return (
@@ -61,7 +64,7 @@ export const Logo = () => {
                     onChange={(switchValue) => handleLanguageChange(switchValue)}
                     unCheckedChildren="EN"
                     checkedChildren="GR"
-                    style={{backgroundColor: "black"}}
+                    style={{backgroundColor: languageSwitch ? 'black' : 'crimson'}}
                 />
             </div>
         </div>

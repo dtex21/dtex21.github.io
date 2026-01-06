@@ -6,7 +6,7 @@ interface ILanguageContext {
     setLanguage: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const DEFAULT_LANGUAGE = 'gr'
+export const DEFAULT_LANGUAGE = 'en'
 
 export const LanguageContext = createContext<ILanguageContext>({language: DEFAULT_LANGUAGE, setLanguage: () => {}})
 

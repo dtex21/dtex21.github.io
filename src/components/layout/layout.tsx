@@ -8,8 +8,10 @@ import { notification } from "antd"
 
 notification.config({maxCount: 1, duration: 2, top: 14})
 
+const browserLanguage = window.sessionStorage.getItem('userSetLanguage') ?? (navigator.language?.split('-')[0] === 'el' ? 'gr' : DEFAULT_LANGUAGE)
+
 const Layout = () => {   
-    const [language, setLanguage] = useState<string>(DEFAULT_LANGUAGE)
+    const [language, setLanguage] = useState<string>(browserLanguage)
      
     return (
         <LanguageContext.Provider value={{language, setLanguage}}>
