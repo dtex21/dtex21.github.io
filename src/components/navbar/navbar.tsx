@@ -9,7 +9,7 @@ const generateNavbarLinks = (linkNames: IFunctionalIcon[]) => {
     return linkNames.map((linkName: IFunctionalIcon) => {
         const linkNameId = linkName.id
         return (
-            <NavLink to={`/${linkNameId}`} 
+            <NavLink to={`/${linkNameId === 'home' ? '' : linkNameId}`} 
                 key={linkNameId}
                 className={({isActive}) => isActive ? "active-functional-icon" : "functional-icon"}
                 style={{marginBottom: '3vh'}}>
