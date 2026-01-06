@@ -9,8 +9,6 @@ import './cv.css'
 import '../utils.css'
 import { LanguageContext, translate } from '../../translation/helper'
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url,).toString()
-
 const defaultPDFScale = 1.5
 const pdfScaleStep = 0.1
 const pdfScaleUpperLimit = 2.2
@@ -19,6 +17,8 @@ const pdfScaleLowerLimit = 0.8
 const CV = () => {
     const context = useContext(LanguageContext)
     const [scale, setScale] = useState<number>(defaultPDFScale)
+
+    pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url,).toString()
 
     const handlePdfViewportTransitionStyle = () => {
         const pdfViewportDiv = document.getElementById('pdfViewport')
