@@ -1,2 +1,2 @@
 # Just my personal site
-Use 'npm start' to buid & run.
+Use 'npm start' to build & run.
