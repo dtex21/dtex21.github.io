@@ -1,6 +1,7 @@
 {
-  "name": "personal-site",
-  "version": "0.1.0",
+  "name": "website",
+  "version": "1.0.0",
+  "homepage": "https://dtex21.github.io/website",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^6.1.0",
@@ -12,6 +13,7 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "antd": "^5.9.1",
+    "gh-pages": "^6.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-pdf": "^10.2.0",
@@ -21,6 +23,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
